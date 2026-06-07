@@ -1,6 +1,5 @@
 package com.nikolayyordanov.stocks.notifier.client;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nikolayyordanov.stocks.notifier.config.YahooProperties;
 import com.nikolayyordanov.stocks.notifier.model.StockMeta;
@@ -8,23 +7,22 @@ import com.nikolayyordanov.stocks.notifier.model.StockQuote;
 import com.nikolayyordanov.stocks.notifier.model.StockResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+@Component
 @RequiredArgsConstructor
 public class YahooClient {
-
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
     private final YahooProperties properties;
 
     public StockMeta getQuote() {
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(properties.baseUrl() + "/v8/finance/chart/" + properties.followSymbol()))
                 .header("User-Agent", "Mozilla/5.0")

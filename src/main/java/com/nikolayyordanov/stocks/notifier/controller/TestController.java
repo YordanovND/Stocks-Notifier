@@ -1,7 +1,6 @@
 package com.nikolayyordanov.stocks.notifier.controller;
 
-import com.nikolayyordanov.stocks.notifier.client.YahooClient;
-import com.nikolayyordanov.stocks.notifier.model.StockMeta;
+import com.nikolayyordanov.stocks.notifier.service.NotifyStockPriceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TestController {
 
-    private final YahooClient yahooClient;
+    private final NotifyStockPriceService notifyStockPriceService;
 
     @GetMapping("/getQuote")
-    public StockMeta getQuote() {
-       return yahooClient.getQuote();
+    public void getQuote() {
+       notifyStockPriceService.sendNotification();
     }
 }

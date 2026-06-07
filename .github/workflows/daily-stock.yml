@@ -1,0 +1,24 @@
+name: Daily Stock Notification
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 09:00 Bulgaria time during winter, 09:00/10:00 depending DST
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 26
+
+      - name: Run app
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: ./gradlew bootRun

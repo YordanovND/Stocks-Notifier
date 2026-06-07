@@ -2,7 +2,11 @@ spring:
   application:
     name: stocks.notifier
 
-http:
-  yahoo:
-    baseUrl: https://query1.finance.yahoo.com
-    followSymbol: PSFE
+yahoo:
+  baseUrl: https://query1.finance.yahoo.com
+  followSymbol: PSFE
+
+telegram:
+  baseUrl: https://api.telegram.org/bot
+  bot-token: ${TELEGRAM_BOT_TOKEN}
+  chat-id: ${TELEGRAM_CHAT_ID}
