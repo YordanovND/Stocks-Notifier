@@ -2,7 +2,7 @@ name: Daily Stock Notification
 
 on:
   schedule:
-    - cron: "* * * * *" # 09:00 Bulgaria time during winter, 09:00/10:00 depending DST
+    - cron: "0 6 * * *" # 09:00 Bulgaria time during winter, 09:00/10:00 depending DST
   workflow_dispatch:
 
 jobs:
