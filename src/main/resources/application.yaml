@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: stocks.notifier
+
+http:
+  yahoo:
+    baseUrl: https://query1.finance.yahoo.com
+    followSymbol: PSFE
