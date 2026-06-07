@@ -5,10 +5,8 @@ import com.nikolayyordanov.stocks.notifier.client.YahooClient;
 import com.nikolayyordanov.stocks.notifier.model.StockMeta;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -30,10 +28,6 @@ public class NotifyStockPriceService implements CommandLineRunner {
         sendNotification();
     }
 
-    //    @Scheduled(
-    //            cron = "0 0 9 * * *",
-    //            zone = ZONE_ID
-    //    )
     public void sendNotification() {
         StockMeta stockQuoteMetadata = yahooClient.getQuote();
 
